@@ -6,7 +6,7 @@ use fork::{daemon, Fork};
 
 
 
-#[cfg(target_os = "unix")]
+#[cfg(target_family = "unix")]
 pub fn launch_isaac_and_quit() {
     let bin_path = get_config().lock().unwrap().get_binary_path().clone();
     if let Ok(Fork::Child) = daemon(false, false) {
@@ -18,7 +18,7 @@ pub fn launch_isaac_and_quit() {
 }
 
 
-#[cfg(target_os = "windows")]
+#[cfg(target_family = "windows")]
 pub fn launch_isaac_and_quit() {
     let bin_path = get_config().lock().unwrap().get_binary_path().clone();
     CreateProcessW::Command::new(&bin_path)

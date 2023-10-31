@@ -18,13 +18,14 @@
     }
     let launchtext;
     is_in_debug.subscribe((v) => {
-        if (v) {
+        if (v == true) {
             launchtext = "start with debug console enabled"
         } if (v == null) {
             launchtext = "set a valid binary and options file"
         } if (v == false) {
-            console.log(v)
             launchtext = "start in daily run mode"
+        } else {
+            console.log(v)
         }
     })
     $: disabled = launchtext === "set a valid binary and options file";
@@ -37,7 +38,7 @@
 
 <div class="flex justify-evenly">
     <div>
-        <button disabled={disabled || null} on:click={start_isaac} type="button" class="w-80 btn-xl bg-blue-600 text-center rounded h-60">
+        <button disabled={disabled || null} on:click={start_isaac} type="button" class="w-80 btn btn-xl bg-blue-600 text-center rounded h-60">
 <!--            <Trophy></Trophy>-->
             {launchtext}
         </button>
