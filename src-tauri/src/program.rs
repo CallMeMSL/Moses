@@ -1,7 +1,7 @@
 use std::thread::sleep;
 use std::time::Duration;
 use crate::config::get_config;
-#[cfg(target_os = "unix")]
+#[cfg(target_family = "unix")]
 use fork::{daemon, Fork};
 
 
